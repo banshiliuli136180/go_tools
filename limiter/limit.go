@@ -5,9 +5,13 @@ import (
 	"time"
 )
 
-// Limit defines the maximum frequency of some events.
-// Limit is represented as number of events per second.
-// A zero Limit allows no events.
+/*
+该文件定义了限制器的限制频率
+*/
+
+// Limit 定义了某些事件的最大频率。
+// Limit 表示每秒发生的事件数。
+// Limit 为零时不允许发生任何事件。
 type Limit float64
 
 // Inf is the infinite rate limit; it allows all events (even if burst is zero).
@@ -36,6 +40,3 @@ func (limit Limit) durationFormTokens(tokens float64) time.Duration {
 	}
 	return time.Duration(duration)
 }
-
-// InfDuration is the duration returned by Delay when a Reservation is not OK.
-const InfDuration = time.Duration(math.MaxInt64)
